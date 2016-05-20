@@ -1,0 +1,12 @@
+{
+  "generator-ng-fullstack": {
+    "username": "jestersimpps",
+    "appName": "kunstmaan-bitcoin-transact",
+    "stack": "fullstack",
+    "server": "node",
+    "client": "ng1",
+    "transpilerServer": "babel",
+    "secure": false,
+    "differentStaticServer": false
+  }
+}
