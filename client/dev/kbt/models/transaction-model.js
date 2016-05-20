@@ -10,13 +10,13 @@
         self.fromaddress = '1LMrshuK8GdJjukVrrbWkT9FUi4aCTvATe';
         self.toaddress = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
         self.privatekey = '3iQUEupVox3hUbn5Q577umvu8Z2zmn4gKW1YJx6TxJsN';
-        self.amount = 6;
+        self.amount = 0.007;
         ng.extend(self, transaction);
         return self;
       };
 
       var MIN_ACCEPTED_LENGTH = 5;
-      var MININGFEE = 5;
+      var MININGFEE = 0.00667;
       var BITCOINADDRESS = '(?:[13][1-9A-Za-z][^O0Il]{24,32})';
       var PRIVATEKEY = '([1-9A-Za-z][^OIl]){20,50}';
 

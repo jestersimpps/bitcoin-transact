@@ -20,7 +20,6 @@
           };
           console.log('service:' + address);
 
-
           return TransactionResource
             .get({pub_key:address})
             .$promise
@@ -34,7 +33,7 @@
           }
 
           var _onSuccess = function(data) {
-            return new Transaction(data);
+            return data.tx;
           };
 
           var _onError = function(error) {

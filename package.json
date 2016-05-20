@@ -14,6 +14,7 @@
     "coveralls-server": "istanbul cover ./node_modules/mocha/bin/_mocha -- tests/**/*.js --compilers js:babel-register --report lcovonly && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "dependencies": {
+    "bitcore-explorers": "^1.0.1",
     "bitcore-lib": "^0.13.15",
     "bluebird": "^3.3.4",
     "body-parser": "^1.5.0",

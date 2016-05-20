@@ -1,186 +1,182 @@
 <div class="container-fluid">
 
-  <div class="todo-panel transition">
+  <div class="title-container">
+    <h1 class="text-muted text-center">kunstmaan-bitcoin-transact</h1>
+  </div>
 
-    <div class="title-container">
-      <h1 class="text-muted text-center">kunstmaan-bitcoin-transact</h1>
-    </div>
+  <hr/>
 
-    <hr/>
-
-    <div class="row">
-      <div class="container panel z-depth-1">
-        <div class="panel-body">
-          <form name="InputForm" ng-submit="createTransaction(transaction)">
-            <div class="col-sm-12 col-lg-6">
-              <label for="">Origin Bitcoin address</label>
-              <div class="input-group">
-                <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress">
-                <span class="input-group-btn">
-                  <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">Verify address</button>
-                </span>
-              </div>
+  <div class="row">
+    <div class="container panel z-depth-1">
+      <div class="panel-body">
+        <form name="InputForm" ng-submit="createTransaction(transaction)">
+          <div class="col-sm-12 col-lg-6">
+            <label for="">Origin Bitcoin address</label>
+            <div class="input-group">
+              <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress">
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">Verify address</button>
+              </span>
             </div>
+          </div>
 
-            <div class="col-sm-12 col-lg-6">
-              <label for="">Recipient Bitcoin address</label>
-              <div class="input-group">
-                <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress">
-                <span class="input-group-btn">
-                  <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">Verify address</button>
-                </span>
-              </div>
+          <div class="col-sm-12 col-lg-6">
+            <label for="">Recipient Bitcoin address</label>
+            <div class="input-group">
+              <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress">
+              <span class="input-group-btn">
+                <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">Verify address</button>
+              </span>
             </div>
+          </div>
 
-            <div class="col-sm-12 col-lg-6">
-              <label for="">Origin private key</label>
-              <input type="text" class="form-control" placeholder="Private key" ng-model="transaction.privatekey">
-            </div>
+          <div class="col-sm-12 col-lg-6">
+            <label for="">Origin private key</label>
+            <input type="text" class="form-control" placeholder="Private key" ng-model="transaction.privatekey">
+          </div>
 
-            <div class="col-sm-12 col-lg-6">
-              <label for="">Amount</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="btc" aria-describedby="bbtc" ng-model="transaction.amount">
-                <span class="input-group-addon btn-info" id="bbtc">mBTC</span>
-              </div>
+          <div class="col-sm-12 col-lg-6">
+            <label for="">Amount</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="btc" aria-describedby="bbtc" ng-model="transaction.amount">
+              <span class="input-group-addon btn-info" id="bbtc">mBTC</span>
             </div>
-            <div class="col-sm-12">
-              <br>
-              <button type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()">
-                Send
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-              </button>
-            </div>
+          </div>
+          <div class="col-sm-12">
+            <br>
+            <button type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()">
+              Send
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            </button>
+          </div>
 
-          </form>
-        </div>
+        </form>
       </div>
     </div>
-    <div class="row">
-      <div class="container panel z-depth-1">
-        <div class="panel-body">
-          <div class="col-sm-12 col-lg-6">
-            <br>
-            <div class="panel panel-default">
-              <div class="panel-heading text-center green-text" ng-show="originOk">
-                <h5>
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  Origin address verified
-                </h5>
-              </div>
-              <div class="panel-heading text-center red-text" ng-hide="originOk">
-                <h5>
-                  <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                  Verify Origin address
-                </h5>
-              </div>
-              <div class="panel-body" ng-show="originOk">
-                <p>
-                  <b>Address:</b>
-                  <span class="pull-right blue-text">{{origin.address}}</span><br>
-                  <b># of Transactions:</b>
-                  <span class="pull-right black-text">{{origin.n_tx}}</span><br>
-                  <b>Total received:</b>
-                  <span class="pull-right green-text">{{origin.total_received | mbtc}}</span><br>
-                  <b>Total sent:</b>
-                  <span class="pull-right red-text">{{origin.total_sent | mbtc}}</span><hr>
-                  <b>Balance:</b>
-                  <span class="pull-right black-text">{{origin.final_balance | mbtc}}</span>
-                </p>
-              </div>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
+  </div>
+  <div class="row">
+    <div class="container panel z-depth-1">
+      <div class="panel-body">
+        <div class="col-sm-12 col-lg-6">
+          <br>
+          <div class="panel panel-default">
+            <div class="panel-heading text-center green-text" ng-show="originOk">
+              <h5>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                Origin address verified
+              </h5>
+            </div>
+            <div class="panel-heading text-center red-text" ng-hide="originOk">
+              <h5>
+                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                Verify Origin address
+              </h5>
+            </div>
+            <div class="panel-body" ng-show="originOk">
+              <p>
+                <b>Address:</b>
+                <span class="pull-right blue-text">{{origin.address}}</span><br>
+                <b># of Transactions:</b>
+                <span class="pull-right black-text">{{origin.n_tx}}</span><br>
+                <b>Total received:</b>
+                <span class="pull-right green-text">{{origin.total_received | mbtc}}</span><br>
+                <b>Total sent:</b>
+                <span class="pull-right red-text">{{origin.total_sent | mbtc}}</span><hr>
+                <b>Balance:</b>
+                <span class="pull-right black-text">{{origin.final_balance | mbtc}}</span>
+              </p>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <td>
+                    <b>Date</b>
+                  </td>
+                  <td>
+                    <b>Amount</b>
+                  </td>
+                  <td>
+                    <b>Hash</b>
+                  </td>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="t in origin.txs | orderBy: '-createdAt'">
                     <td>
-                      <b>Date</b>
+                      <span>{{t.time*1000 | date:'medium'}}</span>
                     </td>
                     <td>
-                      <b>Amount</b>
+                      <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
                     </td>
-                    <td>
-                      <b>Hash</b>
+                    <td class="grey-text" style="word-break:break-all">
+                      {{t.hash}}
                     </td>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="t in origin.txs | orderBy: '-createdAt'">
-                      <td>
-                        <span>{{t.time*1000 | date:'medium'}}</span>
-                      </td>
-                      <td>
-                        <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
-                      </td>
-                      <td class="grey-text" style="word-break:break-all">
-                        {{t.hash}}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="col-sm-12 col-lg-6">
-            <br>
-            <div class="panel panel-default">
-              <div class="panel-heading text-center green-text" ng-show="recipientOk">
-                <h5>
-                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  Recipient address verified
-                </h5>
-              </div>
-              <div class="panel-heading text-center red-text" ng-hide="recipientOk">
-                <h5>
-                  <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                  Verify Recipient address
-                </h5>
-              </div>
-              <div class="panel-body" ng-show="recipientOk">
-                <p>
-                  <b>Address:</b>
-                  <span class="pull-right blue-text">{{recipient.address}}</span><br>
-                  <b># of Transactions:</b>
-                  <span class="pull-right black-text">{{recipient.n_tx}}</span><br>
-                  <b>Total received:</b>
-                  <span class="pull-right green-text">{{recipient.total_received | mbtc}}</span><br>
-                  <b>Total sent:</b>
-                  <span class="pull-right red-text">{{recipient.total_sent | mbtc}}</span><hr>
-                  <b>Balance:</b>
-                  <span class="pull-right black-text">{{recipient.final_balance | mbtc}}</span>
-                </p>
-              </div>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <td>
-                      <b>Date</b>
-                    </td>
-                    <td>
-                      <b>Amount</b>
-                    </td>
-                    <td>
-                      <b>Hash</b>
-                    </td>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="t in recipient.txs | orderBy: '-createdAt'">
-                      <td>
-                        <span>{{t.time*1000 | date:'medium'}}</span>
-                      </td>
-                      <td>
-                        <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
-                      </td>
-                      <td class="grey-text" style="word-break:break-all">
-                        {{t.hash}}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <br/><br/>
-
         </div>
+        <div class="col-sm-12 col-lg-6">
+          <br>
+          <div class="panel panel-default">
+            <div class="panel-heading text-center green-text" ng-show="recipientOk">
+              <h5>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                Recipient address verified
+              </h5>
+            </div>
+            <div class="panel-heading text-center red-text" ng-hide="recipientOk">
+              <h5>
+                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                Verify Recipient address
+              </h5>
+            </div>
+            <div class="panel-body" ng-show="recipientOk">
+              <p>
+                <b>Address:</b>
+                <span class="pull-right blue-text">{{recipient.address}}</span><br>
+                <b># of Transactions:</b>
+                <span class="pull-right black-text">{{recipient.n_tx}}</span><br>
+                <b>Total received:</b>
+                <span class="pull-right green-text">{{recipient.total_received | mbtc}}</span><br>
+                <b>Total sent:</b>
+                <span class="pull-right red-text">{{recipient.total_sent | mbtc}}</span><hr>
+                <b>Balance:</b>
+                <span class="pull-right black-text">{{recipient.final_balance | mbtc}}</span>
+              </p>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <td>
+                    <b>Date</b>
+                  </td>
+                  <td>
+                    <b>Amount</b>
+                  </td>
+                  <td>
+                    <b>Hash</b>
+                  </td>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="t in recipient.txs | orderBy: '-createdAt'">
+                    <td>
+                      <span>{{t.time*1000 | date:'medium'}}</span>
+                    </td>
+                    <td>
+                      <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
+                    </td>
+                    <td class="grey-text" style="word-break:break-all">
+                      {{t.hash}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <br/><br/>
 
       </div>
     </div>
