@@ -9,13 +9,12 @@
     <meta name="keywords" content="Todo,myAwesomeApp,App">
     <meta name="author" content="Author">
 
-
-
     <title>kunstmaan-bitcoin-transact</title>
     <link rel="shortcut icon" type="image/ico" href="./favicon.png"/>
 
     <link type="text/css" rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css?rev=@@hash"/>
     <link type="text/css" rel="stylesheet" href="./bower_components/fontawesome/css/font-awesome.min.css?rev=@@hash"/>
+    <link type="text/css" rel="stylesheet" href="./bower_components/AngularJS-Toaster/toaster.css?rev=@@hash"/>
 
     <link type="text/css" rel="stylesheet" href="./kbt/styles/colors.css?rev=@@hash"/>
   </head>
@@ -23,9 +22,9 @@
   <body class="grey lighten-3">
     <div ng-view></div>
     <script>
-      (function(i, s, o, g, r, a, m) {
+      (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
+        i[r] = i[r] || function () {
           (i[r].q = i[r].q || []).push(arguments)
         },
         i[r].l = 1 * new Date();
@@ -40,7 +39,7 @@
       ga('send', 'pageview');
     </script>
 
-
+    <toaster-container></toaster-container>
 
     <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js?rev=@@hash"></script>
     <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js?rev=@@hash"></script>
@@ -48,6 +47,8 @@
     <script type="text/javascript" src="./bower_components/angular-messages/angular-messages.js?rev=@@hash"></script>
     <script type="text/javascript" src="./bower_components/angular-route/angular-route.js?rev=@@hash"></script>
     <script type="text/javascript" src="./bower_components/angular-resource/angular-resource.js?rev=@@hash"></script>
+    <script type="text/javascript" src="./bower_components/angular-animate/angular-animate.min.js?rev=@@hash"></script>
+    <script type="text/javascript" src="./bower_components/AngularJS-Toaster/toaster.min.js?rev=@@hash"></script>
 
     <script type="text/javascript" src="./app.js?rev=@@hash"></script>
     <script type="text/javascript" src="./app.config.js?rev=@@hash"></script>

@@ -3,7 +3,9 @@
   "main": "kunstmaan-bitcoin-transact.js",
   "version": "0.0.1",
   "homepage": "https://github.com//kunstmaan-bitcoin-transact",
-  "authors": ["jestersimpps <email>"],
+  "authors": [
+    "jestersimpps <email>"
+  ],
   "description": "desc",
   "keywords": [],
   "license": "MIT",
@@ -27,7 +29,8 @@
     "angular-route": "~1.4.x",
     "angular-resource": "~1.4.x",
     "bootstrap": "3.3.1",
-    "fontawesome": "~4.3.0"
+    "fontawesome": "~4.3.0",
+    "AngularJS-Toaster": "angularjs-toaster#^2.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.x"

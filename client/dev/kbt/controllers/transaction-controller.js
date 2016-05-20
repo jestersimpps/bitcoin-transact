@@ -7,7 +7,8 @@
       '$scope',
       'Transaction',
       'TransactionService',
-      function($scope, Transaction, TransactionService) {
+      'toaster',
+      function($scope, Transaction, TransactionService,toaster) {
 
         $scope.transaction = new Transaction();
         $scope.origin = [];
@@ -24,6 +25,7 @@
             })
             .catch(function(error) {
               console.log(error);
+               toaster.pop('error', "Transaction error", error.data);
             });
         };
 
@@ -34,10 +36,12 @@
             .then(function(balance) {
               $scope.origin = balance;
               $scope.originOk = true;
+              toaster.pop('success', "Verification success", 'Origin address verified');
               console.log(balance);
             })
             .catch(function(error) {
               $scope.originOk = false;
+              toaster.pop('error', "Verification error", error.data);
               console.log(error);
             });
         };
@@ -49,10 +53,12 @@
             .then(function(balance) {
               $scope.recipient = balance;
               $scope.recipientOk = true;
+              toaster.pop('success', "Verification success", 'Recipient address verified');
               console.log(balance);
             })
             .catch(function(error) {
               $scope.recipientOk = false;
+              toaster.pop('error', "Verification error", error.data);
               console.log(error);
             });
         };

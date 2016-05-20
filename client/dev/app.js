@@ -1,9 +1,12 @@
-;(function(ng) {
+;
+(function(ng) {
   'use strict';
 
   ng.module('kunstmaan-bitcoin-transact', [
-      'ngResource',
-      'ngRoute',
-      'ngMessages'
-    ]);
+    'ngResource',
+    'ngRoute',
+    'ngMessages',
+    'toaster',
+    'ngAnimate'
+  ]);
 }(window.angular));
