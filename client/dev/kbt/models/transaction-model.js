@@ -7,8 +7,8 @@
 
       var Transaction = function(transaction) {
         var self = this;
-        self.fromaddress = '1LMrshuK8GdJjukVrrbWkT9FUi4aCTvATe';
-        self.toaddress = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
+        self.toaddress = '1LMrshuK8GdJjukVrrbWkT9FUi4aCTvATe';
+        self.fromaddress = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
         self.privatekey = '3iQUEupVox3hUbn5Q577umvu8Z2zmn4gKW1YJx6TxJsN';
         self.amount = 0.007;
         ng.extend(self, transaction);

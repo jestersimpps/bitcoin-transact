@@ -11,7 +11,6 @@ export default class WalletController {
 
   static createTransaction(req, res) {
     let transaction = req.body;
-    console.log(transaction);
     WalletService
       .createTransaction(transaction)
       .then(data => res.status(201).json(data))
