@@ -53,20 +53,17 @@ export default class WalletService {
           return reject(error);
         } else {
           if (utxos.length == 0) {
-            console.log("Not enough Satoshis to cover the miner fee.");
-            return reject("Not enough Satoshis to cover the miner fee.");
+            return reject("You don't have enough Satoshis to cover the miner fee.");
           } else if (bitcore.Unit.fromBTC(utxos[0].toObject().amount).toSatoshis() - minerFee > minerFee) {
-            console.log("We've got enough Satoshis!");
             console.log(utxos[0]);
-            // let bitcore_transaction = new bitcore.Transaction()
-            //   .from(utxos[0]) // using the last UXTO to sign the next transaction
-            //   .to(transaction.toaddress, transactionAmount - minerFee) // Send 'transactionAmount' Satoshi's
-            //   .addData('coolio') // Our message to Satoshi
-            //   .sign(transaction.privatekey);
-            // console.log(bitcore_transaction);
-            // resolve({
-            //   'transaction_hex: ' + bitcore_transaction.checkedSerialize()
-            // });
+            let bitcore_transaction = new bitcore.Transaction()
+              .from(utxos[0]) // using the last UXTO to sign the next transaction
+              .to(transaction.toaddress, transactionAmount - minerFee) // Send 'transactionAmount' Satoshi's
+              .addData('coolio') // Our message to Satoshi
+              .change(transaction.fromaddress)
+              .sign(transaction.privatekey);
+            console.log(bitcore_transaction.checkedSerialize());
+
             // insight.broadcast(transaction, function(error, body) {
             //   if (error) {
             //     console.log('Error in broadcast: ' + error);
@@ -75,7 +72,7 @@ export default class WalletService {
             //     console.log('http://explorer.chain.com/transactions/' + body + "#!transaction-op-return")
             //   }
             // });
-            resolve({transactionId:'123456'});
+            resolve({transactionId:bitcore_transaction.checkedSerialize()});
           }
 
         }

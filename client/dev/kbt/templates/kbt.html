@@ -4,7 +4,7 @@
     <h1 class="text-muted text-center">kunstmaan-bitcoin-transact</h1>
   </div>
 
-  <hr/>
+  <br/>
 
   <div class="row">
     <div class="container panel z-depth-1">
@@ -13,9 +13,9 @@
           <div class="col-sm-12 col-lg-6">
             <label for="">Origin Bitcoin address</label>
             <div class="input-group">
-              <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress" ng-blur="getOriginHistory(transaction.fromaddress)">
+              <input type="text" class="form-control " placeholder="1DuFRRFEJvchWpTQiDqMk3DW3mP9XZ3UTa" ng-model="transaction.fromaddress" ng-blur="getOriginHistory(transaction.fromaddress)">
               <span class="input-group-btn">
-                <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">
+                <button class="btn btn-default" type="button" ng-click="getOriginHistory(transaction.fromaddress)">
                   <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Verify address </button>
               </span>
             </div>
@@ -24,9 +24,9 @@
           <div class="col-sm-12 col-lg-6">
             <label for="">Recipient Bitcoin address</label>
             <div class="input-group">
-              <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress" ng-blur="getRecipientHistory(transaction.toaddress)">
+              <input type="text" class="form-control " placeholder="15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y" ng-model="transaction.toaddress" ng-blur="getRecipientHistory(transaction.toaddress)">
               <span class="input-group-btn">
-                <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">
+                <button class="btn btn-default" type="button" ng-click="getRecipientHistory(transaction.toaddress)">
                 <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>   Verify address </button>
               </span>
             </div>
@@ -34,21 +34,21 @@
 
           <div class="col-sm-12 col-lg-6">
             <label for="">Origin private key</label>
-            <input type="text" class="form-control" placeholder="Private key" ng-model="transaction.privatekey">
+            <input type="text" class="form-control" placeholder="5KG7bZhGX5jaCD46cxbN1tX6nq1zSa4gAZ4baKmw277RKGbH3qc" ng-model="transaction.privatekey">
           </div>
 
           <div class="col-sm-12 col-lg-6">
             <label for="">Amount</label>
             <div class="input-group">
               <input type="text" class="form-control" id="btc" aria-describedby="bbtc" ng-model="transaction.amount">
-              <span class="input-group-addon btn-info" id="bbtc">mBTC</span>
+              <span class="input-group-addon" id="bbtc">mBTC</span>
             </div>
           </div>
           <div class="col-sm-12">
             <br>
             <button id="submitBtn" type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()" data-loading-text="Please wait...">
               Send
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-bitcoin" aria-hidden="true"></span>
             </button>
           </div>
 
@@ -76,8 +76,8 @@
             </div>
             <div class="panel-body" ng-show="originOk">
               <p>
-                <b>Address:</b>
-                <span class="pull-right blue-text">{{origin.address}}</span><br>
+                <b>Origin Address:</b>
+                <span class="pull-right black-text" style="word-break:break-all">{{origin.address}}</span><br>
                 <b># of Transactions:</b>
                 <span class="pull-right black-text">{{origin.n_tx}}</span><br>
                 <b>Total received:</b>
@@ -110,7 +110,7 @@
                       <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
                     </td>
                     <td class="grey-text" style="word-break:break-all">
-                      {{t.hash}}
+                      <a ng-href="https://blockchain.info/tx/{{t.hash}}" target="_blank">{{t.hash}}</a>
                     </td>
                   </tr>
                 </tbody>
@@ -120,7 +120,7 @@
         </div>
         <div class="col-sm-12 col-lg-6">
           <br>
-          <div class="panel panel-default">
+          <div class="panel panel-default ">
             <div class="panel-heading text-center green-text" ng-show="recipientOk">
               <h5>
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -135,8 +135,8 @@
             </div>
             <div class="panel-body" ng-show="recipientOk">
               <p>
-                <b>Address:</b>
-                <span class="pull-right blue-text">{{recipient.address}}</span><br>
+                <b>Recipient Address:</b>
+                <span class="pull-right black-text" style="word-break:break-all">{{recipient.address}}</span><br>
                 <b># of Transactions:</b>
                 <span class="pull-right black-text">{{recipient.n_tx}}</span><br>
                 <b>Total received:</b>
@@ -169,7 +169,7 @@
                       <span ng-class="{'red-text':t.result < 0,'green-text': t.result > 0}">{{t.result | mbtc}}</span>
                     </td>
                     <td class="grey-text" style="word-break:break-all">
-                      {{t.hash}}
+                      <a ng-href="https://blockchain.info/tx/{{t.hash}}" target="_blank">{{t.hash}}</a>
                     </td>
                   </tr>
                 </tbody>

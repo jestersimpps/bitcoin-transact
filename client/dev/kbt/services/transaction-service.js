@@ -18,7 +18,6 @@
           var _onError = function(error) {
             return $q.reject(error);
           };
-          console.log('service:' + address);
 
           return TransactionResource
             .get({pub_key:address})
