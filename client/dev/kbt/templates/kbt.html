@@ -15,7 +15,8 @@
             <div class="input-group">
               <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress">
               <span class="input-group-btn">
-                <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">Verify address</button>
+                <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">
+                  <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Verify address </button>
               </span>
             </div>
           </div>
@@ -25,7 +26,8 @@
             <div class="input-group">
               <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress">
               <span class="input-group-btn">
-                <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">Verify address</button>
+                <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">
+                <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>   Verify address </button>
               </span>
             </div>
           </div>

@@ -33,7 +33,7 @@
           }
 
           var _onSuccess = function(data) {
-            return data.tx;
+            return data;
           };
 
           var _onError = function(error) {

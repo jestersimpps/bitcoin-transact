@@ -21,6 +21,7 @@
             .createTransaction(transaction)
             .then(function(newTransaction) {
               // $scope.transactions.push(newTransaction);
+              toaster.pop('success', "Transaction succeeded", "transaction ID: " + newTransaction.transactionId);
               console.log(newTransaction);
             })
             .catch(function(error) {
@@ -36,7 +37,6 @@
             .then(function(balance) {
               $scope.origin = balance;
               $scope.originOk = true;
-              toaster.pop('success', "Verification success", 'Origin address verified');
               console.log(balance);
             })
             .catch(function(error) {
@@ -53,7 +53,6 @@
             .then(function(balance) {
               $scope.recipient = balance;
               $scope.recipientOk = true;
-              toaster.pop('success', "Verification success", 'Recipient address verified');
               console.log(balance);
             })
             .catch(function(error) {

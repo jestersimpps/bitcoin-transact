@@ -75,6 +75,7 @@ export default class WalletService {
             //     console.log('http://explorer.chain.com/transactions/' + body + "#!transaction-op-return")
             //   }
             // });
+            resolve({transactionId:'123456'});
           }
 
         }
