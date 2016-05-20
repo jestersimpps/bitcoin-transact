@@ -13,13 +13,14 @@
         $scope.origin = [];
         $scope.recipient = [];
         $scope.recipientOk = false;
+        $scope.originOk = false;
 
         $scope.createTransaction = function(transaction) {
           TransactionService
             .createTransaction(transaction)
             .then(function(newTransaction) {
-              $scope.transactions.push(newTransaction);
-              // $scope.transaction = new Transaction();
+              // $scope.transactions.push(newTransaction);
+              console.log(newTransaction);
             })
             .catch(function(error) {
               console.log(error);
@@ -55,6 +56,7 @@
               console.log(error);
             });
         };
+
 
       }
     ]);

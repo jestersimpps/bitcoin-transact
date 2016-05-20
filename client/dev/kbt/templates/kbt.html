@@ -11,7 +11,7 @@
     <div class="row">
       <div class="container panel z-depth-1">
         <div class="panel-body">
-          <form name="InputForm" ng-submit="createTodo(transaction)">
+          <form name="InputForm" ng-submit="createTransaction(transaction)">
             <div class="col-sm-12 col-lg-6">
               <label for="">Origin Bitcoin address</label>
               <div class="input-group">
@@ -46,7 +46,7 @@
             </div>
             <div class="col-sm-12">
               <br>
-              <button type="submit" class="btn btn-success btn-block" ng-disabled="InputForm.$invalid || !transaction.isValid()">
+              <button type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()">
                 Send
                 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
@@ -65,28 +65,26 @@
               <div class="panel-heading text-center green-text" ng-show="originOk">
                 <h5>
                   <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  Origin verified
+                  Origin address verified
                 </h5>
               </div>
               <div class="panel-heading text-center red-text" ng-hide="originOk">
                 <h5>
                   <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                  Check Origin address
+                  Verify Origin address
                 </h5>
               </div>
               <div class="panel-body" ng-show="originOk">
                 <p>
-                  <b>hash160:</b>
-                  <span class="pull-right black-text">{{origin.hash160}}</span><br>
-                  <b>address:</b>
+                  <b>Address:</b>
                   <span class="pull-right blue-text">{{origin.address}}</span><br>
-                  <b># transactions:</b>
+                  <b># of Transactions:</b>
                   <span class="pull-right black-text">{{origin.n_tx}}</span><br>
-                  <b>total_received (mBTC):</b>
+                  <b>Total received:</b>
                   <span class="pull-right green-text">{{origin.total_received | mbtc}}</span><br>
-                  <b>total_sent (mBTC):</b>
-                  <span class="pull-right red-text">{{origin.total_sent | mbtc}}</span><br>
-                  <b>Final Balance (mBTC):</b>
+                  <b>Total sent:</b>
+                  <span class="pull-right red-text">{{origin.total_sent | mbtc}}</span><hr>
+                  <b>Balance:</b>
                   <span class="pull-right black-text">{{origin.final_balance | mbtc}}</span>
                 </p>
               </div>
@@ -126,28 +124,26 @@
               <div class="panel-heading text-center green-text" ng-show="recipientOk">
                 <h5>
                   <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                  Recipient verified
+                  Recipient address verified
                 </h5>
               </div>
               <div class="panel-heading text-center red-text" ng-hide="recipientOk">
                 <h5>
                   <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-                  Check Recipient address
+                  Verify Recipient address
                 </h5>
               </div>
               <div class="panel-body" ng-show="recipientOk">
                 <p>
-                  <b>hash160:</b>
-                  <span class="pull-right black-text">{{recipient.hash160}}</span><br>
-                  <b>address:</b>
+                  <b>Address:</b>
                   <span class="pull-right blue-text">{{recipient.address}}</span><br>
-                  <b># transactions:</b>
+                  <b># of Transactions:</b>
                   <span class="pull-right black-text">{{recipient.n_tx}}</span><br>
-                  <b>total_received (mBTC):</b>
+                  <b>Total received:</b>
                   <span class="pull-right green-text">{{recipient.total_received | mbtc}}</span><br>
-                  <b>total_sent (mBTC):</b>
-                  <span class="pull-right red-text">{{recipient.total_sent | mbtc}}</span><br>
-                  <b>Final Balance (mBTC):</b>
+                  <b>Total sent:</b>
+                  <span class="pull-right red-text">{{recipient.total_sent | mbtc}}</span><hr>
+                  <b>Balance:</b>
                   <span class="pull-right black-text">{{recipient.final_balance | mbtc}}</span>
                 </p>
               </div>

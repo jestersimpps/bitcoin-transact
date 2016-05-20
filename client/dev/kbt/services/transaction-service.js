@@ -29,9 +29,9 @@
         };
 
         TS.prototype.createTransaction = function(transaction) {
-          // if (!ng.isObject(transaction) || !(transaction instanceof Transaction) || !transaction.isValid()) {
-          //   return $q.reject(new TypeError('Invalid transaction.'));
-          // }
+          if (!ng.isObject(transaction) || !(transaction instanceof Transaction) || !transaction.isValid()) {
+            return $q.reject(new TypeError('Invalid transaction.'));
+          }
 
           var _onSuccess = function(data) {
             return new Transaction(data);
