@@ -8,7 +8,7 @@
       'Transaction',
       'TransactionService',
       'toaster',
-      function($scope, Transaction, TransactionService,toaster) {
+      function($scope, Transaction, TransactionService, toaster) {
 
         $scope.transaction = new Transaction();
         $scope.origin = [];
@@ -17,16 +17,19 @@
         $scope.originOk = false;
 
         $scope.createTransaction = function(transaction) {
+          var $btn = $('#submitBtn').button('loading');
           TransactionService
             .createTransaction(transaction)
             .then(function(newTransaction) {
               // $scope.transactions.push(newTransaction);
               toaster.pop('success', "Transaction succeeded", "transaction ID: " + newTransaction.transactionId);
+              $btn.button('reset')
               console.log(newTransaction);
             })
             .catch(function(error) {
               console.log(error);
-               toaster.pop('error', "Transaction error", error.data);
+              toaster.pop('error', "Transaction error", error.data);
+              $btn.button('reset')
             });
         };
 

@@ -13,7 +13,7 @@
           <div class="col-sm-12 col-lg-6">
             <label for="">Origin Bitcoin address</label>
             <div class="input-group">
-              <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress">
+              <input type="text" class="form-control blue-text" placeholder="Origin address" ng-model="transaction.fromaddress" ng-blur="getOriginHistory(transaction.fromaddress)">
               <span class="input-group-btn">
                 <button class="btn btn-info" type="button" ng-click="getOriginHistory(transaction.fromaddress)">
                   <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Verify address </button>
@@ -24,7 +24,7 @@
           <div class="col-sm-12 col-lg-6">
             <label for="">Recipient Bitcoin address</label>
             <div class="input-group">
-              <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress">
+              <input type="text" class="form-control blue-text" placeholder="Recipient address" ng-model="transaction.toaddress" ng-blur="getRecipientHistory(transaction.toaddress)">
               <span class="input-group-btn">
                 <button class="btn btn-info" type="button" ng-click="getRecipientHistory(transaction.toaddress)">
                 <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>   Verify address </button>
@@ -46,7 +46,7 @@
           </div>
           <div class="col-sm-12">
             <br>
-            <button type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()">
+            <button id="submitBtn" type="submit" class="btn btn-success btn-block" ng-disabled="!transaction.isValid()" data-loading-text="Please wait...">
               Send
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
             </button>
