@@ -20,7 +20,7 @@
           };
 
           return TransactionResource
-            .get({pub_key:address})
+            .get({address:address})
             .$promise
             .then(_onSuccess)
             .catch(_onError);

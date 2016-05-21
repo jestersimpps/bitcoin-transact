@@ -7,7 +7,7 @@ import bitcoinaddress from 'bitcoin-address';
 export default class WalletService {
 
 
-  static getBalance = (pub_key) => {
+  static getBalance = (address) => {
     return new Promise((resolve, reject) => {
 
       if (!bitcoinaddress.validate(pub_key)) {
@@ -15,7 +15,7 @@ export default class WalletService {
       }
       //get balance using the blockchain api
       //let pub_key = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
-      const url = 'https://blockchain.info/address/' + pub_key + '?format=json';
+      const url = 'https://blockchain.info/address/' + address + '?format=json';
 
       request(url, function(error, response, body) {
 
