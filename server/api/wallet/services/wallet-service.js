@@ -14,7 +14,6 @@ export default class WalletService {
         return reject('Address checksum failed');
       }
       //get balance using the blockchain api
-      //let pub_key = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
       const url = 'https://blockchain.info/address/' + address + '?format=json';
 
       request(url, function(error, response, body) {
