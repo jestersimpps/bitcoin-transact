@@ -44,7 +44,7 @@
             })
             .catch(function(error) {
               $scope.originOk = false;
-              toaster.pop('error', "Verification error", error.data);
+              toaster.pop('error', "Origin address verification error", error.data);
               console.log(error);
             });
         };
@@ -60,7 +60,7 @@
             })
             .catch(function(error) {
               $scope.recipientOk = false;
-              toaster.pop('error', "Verification error", error.data);
+              toaster.pop('error', "Recipient address verification error", error.data);
               console.log(error);
             });
         };

@@ -8,8 +8,7 @@
         $routeProvider
           .when('/', {
             templateUrl: 'kbt/templates/kbt.html',
-            controller: 'TransactionController',
-            // controllerAs: 'TransactionController'
+            controller: 'TransactionController'
           })
           .otherwise({
             redirectTo: '/'

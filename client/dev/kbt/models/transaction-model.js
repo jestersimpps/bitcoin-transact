@@ -8,7 +8,7 @@
       var Transaction = function(transaction) {
         var self = this;
         self.toaddress = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
-        self.fromaddress = '1DuFRRFEJvchWpTQiDqMk3DW3mP9XZ3UTa';
+        self.fromaddress = '15CrPRVdNUaXX1DCZqttnP21wyJLTTmy8y';
         self.privatekey = '5KG7bZhGX5jaCD46cxbN1tX6nq1zSa4gAZ4baKmw277RKGbH3qc';
         self.amount = 0.007;
         ng.extend(self, transaction);
@@ -16,7 +16,7 @@
       };
 
       var MIN_ACCEPTED_LENGTH = 5;
-      var MININGFEE = 0.00667;
+      var MININGFEE = 0.12800;
       var BITCOINADDRESS = '(?:[13][1-9A-Za-z][^O0Il]{24,32})';
       var PRIVATEKEY = '([1-9A-Za-z][^OIl]){20,50}';
 

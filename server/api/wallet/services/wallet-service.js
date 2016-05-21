@@ -35,8 +35,8 @@ export default class WalletService {
   static createTransaction = (transaction) => {
     return new Promise((resolve, reject) => {
 
-      const minerFee = 667; //cost of transaction
-      const transactionAmount = transaction.amount * 100000; //converting mBTC to Satoshis
+      const minerFee = 12800; //cost of transaction in satoshis (minerfee)
+      const transactionAmount = parseInt(transaction.amount * 100000); //1 mBTC = 100000 satoshis
       const insight = new explorers.Insight();
 
       if (!bitcoinaddress.validate(transaction.fromaddress)) {
@@ -46,37 +46,69 @@ export default class WalletService {
         return reject('Recipient address checksum failed');
       }
 
-
       insight.getUnspentUtxos(transaction.fromaddress, function(error, utxos) {
         if (error) {
+          //any other error
           console.log(error);
           return reject(error);
         } else {
           if (utxos.length == 0) {
+            //if no transactions have happened, there is no balance on the address.
             return reject("You don't have enough Satoshis to cover the miner fee.");
-          } else if (bitcore.Unit.fromBTC(utxos[0].toObject().amount).toSatoshis() - minerFee > minerFee) {
-            console.log(utxos[0]);
-            let bitcore_transaction = new bitcore.Transaction()
-              .from(utxos[0]) // using the last UXTO to sign the next transaction
-              .to(transaction.toaddress, transactionAmount - minerFee) // Send 'transactionAmount' Satoshi's
-              .addData('coolio') // Our message to Satoshi
-              .change(transaction.fromaddress)
-              .sign(transaction.privatekey);
-            console.log(bitcore_transaction.checkedSerialize());
-
-            // insight.broadcast(transaction, function(error, body) {
-            //   if (error) {
-            //     console.log('Error in broadcast: ' + error);
-            //   } else {
-            //     console.log("Success! Here's our Transaction ID: " + body);
-            //     console.log('http://explorer.chain.com/transactions/' + body + "#!transaction-op-return")
-            //   }
-            // });
-            resolve({transactionId:bitcore_transaction.checkedSerialize()});
+          }
+          //get balance
+          let balance = 0;
+          for (var i = 0; i < utxos.length; i++) {
+            balance += parseInt(utxos[i]['satoshis']);
           }
 
+          console.log('transactionAmount '+transactionAmount);
+          console.log('minerFee '+minerFee);
+          console.log('balance '+balance);
+
+          //check whether the balance of the address covers the miner fee
+          if ((balance - transactionAmount - minerFee) > 0) {
+
+            //create a new transaction
+            try {
+              let bitcore_transaction = new bitcore.Transaction()
+                .from(utxos)
+                .to(transaction.toaddress, transactionAmount) // Send 'transactionAmount' in Satoshi's
+                .change(transaction.fromaddress)
+                .sign(transaction.privatekey);
+
+              if (bitcore_transaction.getSerializationError()) {
+                let error = bitcore_transaction.getSerializationError().message;
+                switch (error) {
+                  case 'Some inputs have not been fully signed':
+                    return reject('Please check your private key');
+                    break;
+                  default:
+                    return reject(error);
+                }
+                console.log(error);
+              }
+
+              // broadcast the transaction to the blockchain
+              insight.broadcast(bitcore_transaction, function(error, body) {
+                if (error) {
+                  reject('Error in broadcast: ' + error);
+                } else {
+                  resolve({
+                    transactionId: body
+                  });
+                }
+              });
+
+            } catch (error) {
+              return reject(error.message);
+            }
+          } else {
+            return reject("You don't have enough Satoshis to cover the miner fee.");
+          }
         }
       });
+
     });
   }
 
