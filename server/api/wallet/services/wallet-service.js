@@ -10,7 +10,7 @@ export default class WalletService {
   static getBalance = (address) => {
     return new Promise((resolve, reject) => {
 
-      if (!bitcoinaddress.validate(pub_key)) {
+      if (!bitcoinaddress.validate(address)) {
         return reject('Address checksum failed');
       }
       //get balance using the blockchain api
