@@ -37,7 +37,7 @@ export default class WalletService {
 
       const unit = bitcore.Unit;
       const insight = new explorers.Insight();
-      const minerFee = unit.fromSatoshis(12800).toSatoshis(); //cost of transaction in satoshis (minerfee)
+      const minerFee = unit.fromMilis(0.128).toSatoshis(); //cost of transaction in satoshis (minerfee)
       const transactionAmount = unit.fromMilis(parseInt(transaction.amount)).toSatoshis(); //convert mBTC to Satoshis using bitcore unit
 
       if (!bitcoinaddress.validate(transaction.fromaddress)) {
@@ -53,12 +53,10 @@ export default class WalletService {
           console.log(error);
           return reject(error);
         } else {
-
-          //if no transactions have happened, there is no balance on the address.
           if (utxos.length == 0) {
+            //if no transactions have happened, there is no balance on the address.
             return reject("You don't have enough Satoshis to cover the miner fee.");
           }
-
           //get balance
           let balance = unit.fromSatoshis(0).toSatoshis();
           for (var i = 0; i < utxos.length; i++) {
@@ -76,7 +74,8 @@ export default class WalletService {
             try {
               let bitcore_transaction = new bitcore.Transaction()
                 .from(utxos)
-                .to(transaction.toaddress, transactionAmount) // Send 'transactionAmount' in Satoshi's
+                .to(transaction.toaddress, transactionAmount) 
+                .fee(minerFee)
                 .change(transaction.fromaddress)
                 .sign(transaction.privatekey);
 
@@ -104,6 +103,7 @@ export default class WalletService {
               });
 
             } catch (error) {
+
               return reject(error.message);
             }
           } else {

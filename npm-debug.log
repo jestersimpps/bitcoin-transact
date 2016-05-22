@@ -9,8 +9,8 @@
 6 silly lifecycle kunstmaan-bitcoin-transact@0.0.1~prestart: no script for prestart, continuing
 7 info lifecycle kunstmaan-bitcoin-transact@0.0.1~start: kunstmaan-bitcoin-transact@0.0.1
 8 verbose lifecycle kunstmaan-bitcoin-transact@0.0.1~start: unsafe-perm in lifecycle true
-9 verbose lifecycle kunstmaan-bitcoin-transact@0.0.1~start: PATH: /Users/jestersimpps/.npm-global/lib/node_modules/npm/bin/node-gyp-bin:/Users/jestersimpps/Sites/experiments/transact/node_modules/.bin:/usr/local/bin:/Users/jestersimpps/.npm-global/lib/node_modules/npm/bin/node-gyp-bin:/Users/jestersimpps/Sites/experiments/transact/node_modules/.bin:/usr/local/bin:/Users/jestersimpps/.npm-global/bin:/usr/local/mongodb/bin:/usr/local/git/bin:/usr/local/openssl/bin:/usr/local/autoconf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/bin:/usr/local/mongodb/bin:/usr/local/git/bin:/usr/local/openssl/bin:/usr/local/autoconf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jestersimpps/android-sdk/android-sdk-macosx/tools:/Users/jestersimpps/android-sdk/android-sdk-macosx/platform-tools:/Users/jestersimpps/ant/apache-ant-1.9.6/bin
-10 verbose lifecycle kunstmaan-bitcoin-transact@0.0.1~start: CWD: /Users/jestersimpps/Sites/experiments/transact
+9 verbose lifecycle kunstmaan-bitcoin-transact@0.0.1~start: PATH: /Users/jestersimpps/.npm-global/lib/node_modules/npm/bin/node-gyp-bin:/Users/jestersimpps/Sites/public repos/transact/node_modules/.bin:/usr/local/bin:/Users/jestersimpps/.npm-global/lib/node_modules/npm/bin/node-gyp-bin:/Users/jestersimpps/Sites/public repos/transact/node_modules/.bin:/usr/local/bin:/Users/jestersimpps/.npm-global/bin:/usr/local/mongodb/bin:/usr/local/git/bin:/usr/local/openssl/bin:/usr/local/autoconf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin/bin:/usr/local/mongodb/bin:/usr/local/git/bin:/usr/local/openssl/bin:/usr/local/autoconf/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/jestersimpps/android-sdk/android-sdk-macosx/tools:/Users/jestersimpps/android-sdk/android-sdk-macosx/platform-tools:/Users/jestersimpps/ant/apache-ant-1.9.6/bin
+10 verbose lifecycle kunstmaan-bitcoin-transact@0.0.1~start: CWD: /Users/jestersimpps/Sites/public repos/transact
 11 silly lifecycle kunstmaan-bitcoin-transact@0.0.1~start: Args: [ '-c', 'node index' ]
 12 silly lifecycle kunstmaan-bitcoin-transact@0.0.1~start: Returned: code: 1  signal: null
 13 info lifecycle kunstmaan-bitcoin-transact@0.0.1~start: Failed to exec start script
@@ -25,7 +25,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:827:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
 15 verbose pkgid kunstmaan-bitcoin-transact@0.0.1
-16 verbose cwd /Users/jestersimpps/Sites/experiments/transact
+16 verbose cwd /Users/jestersimpps/Sites/public repos/transact
 17 error Darwin 15.4.0
 18 error argv "/usr/local/bin/node" "/Users/jestersimpps/.npm-global/bin/npm" "start"
 19 error node v5.7.1
