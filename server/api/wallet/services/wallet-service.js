@@ -34,9 +34,11 @@ export default class WalletService {
   static createTransaction = (transaction) => {
     return new Promise((resolve, reject) => {
 
-      const minerFee = 12800; //cost of transaction in satoshis (minerfee)
-      const transactionAmount = parseInt(transaction.amount * 100000); //1 mBTC = 100000 satoshis
+
+      const unit = bitcore.Unit;
       const insight = new explorers.Insight();
+      const minerFee = unit.fromSatoshis(12800).toSatoshis(); //cost of transaction in satoshis (minerfee)
+      const transactionAmount = unit.fromMilis(parseInt(transaction.amount)).toSatoshis(); //convert mBTC to Satoshis using bitcore unit
 
       if (!bitcoinaddress.validate(transaction.fromaddress)) {
         return reject('Origin address checksum failed');
@@ -51,19 +53,21 @@ export default class WalletService {
           console.log(error);
           return reject(error);
         } else {
+
+          //if no transactions have happened, there is no balance on the address.
           if (utxos.length == 0) {
-            //if no transactions have happened, there is no balance on the address.
             return reject("You don't have enough Satoshis to cover the miner fee.");
           }
+
           //get balance
-          let balance = 0;
+          let balance = unit.fromSatoshis(0).toSatoshis();
           for (var i = 0; i < utxos.length; i++) {
-            balance += parseInt(utxos[i]['satoshis']);
+            balance += unit.fromSatoshis(parseInt(utxos[i]['satoshis'])).toSatoshis();
           }
 
-          console.log('transactionAmount '+transactionAmount);
-          console.log('minerFee '+minerFee);
-          console.log('balance '+balance);
+          console.log('transactionAmount: ' + transactionAmount);
+          console.log('minerFee: ' + minerFee);
+          console.log('balance: ' + balance);
 
           //check whether the balance of the address covers the miner fee
           if ((balance - transactionAmount - minerFee) > 0) {
@@ -76,6 +80,7 @@ export default class WalletService {
                 .change(transaction.fromaddress)
                 .sign(transaction.privatekey);
 
+              //handle serialization errors
               if (bitcore_transaction.getSerializationError()) {
                 let error = bitcore_transaction.getSerializationError().message;
                 switch (error) {
@@ -85,7 +90,6 @@ export default class WalletService {
                   default:
                     return reject(error);
                 }
-                console.log(error);
               }
 
               // broadcast the transaction to the blockchain
@@ -107,7 +111,6 @@ export default class WalletService {
           }
         }
       });
-
     });
   }
 
