@@ -22,9 +22,9 @@ Install the bower dependencies
 bower install
 ```
 
-## running the project:
+## Running the project:
 
-To run the project on http://localhost:3333/
+To run the project on [http://localhost:3333/](http://localhost:3333/)
 ```
 npm start
 ```
@@ -32,4 +32,4 @@ You can also run in dev mode, which will autoreload using [browsersync](https://
 ```
 npm run dev
 ```
-Open browsersync options on http://localhost:3001/
+Open browsersync options on [http://localhost:3001/](http://localhost:3001/)
