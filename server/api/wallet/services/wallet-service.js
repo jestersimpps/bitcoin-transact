@@ -38,7 +38,7 @@ export default class WalletService {
       const unit = bitcore.Unit;
       const insight = new explorers.Insight();
       const minerFee = unit.fromMilis(0.128).toSatoshis(); //cost of transaction in satoshis (minerfee)
-      const transactionAmount = unit.fromMilis(parseInt(transaction.amount)).toSatoshis(); //convert mBTC to Satoshis using bitcore unit
+      const transactionAmount = unit.fromMilis(transaction.amount).toSatoshis(); //convert mBTC to Satoshis using bitcore unit
 
       if (!bitcoinaddress.validate(transaction.fromaddress)) {
         return reject('Origin address checksum failed');
@@ -74,7 +74,7 @@ export default class WalletService {
             try {
               let bitcore_transaction = new bitcore.Transaction()
                 .from(utxos)
-                .to(transaction.toaddress, transactionAmount) 
+                .to(transaction.toaddress, transactionAmount)
                 .fee(minerFee)
                 .change(transaction.fromaddress)
                 .sign(transaction.privatekey);
